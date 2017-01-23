@@ -1,5 +1,13 @@
 'use strict';
 var Alexa = require('alexa-sdk');
+var Twitter = require('twitter');
+
+var client = new Twitter({
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: '',
+});
 
 var APP_ID = 'amzn1.ask.skill.a1d211d8-eee7-4c5c-bd53-87648910eaac'; //OPTIONAL: replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 var SKILL_NAME = 'Elon Facts';
