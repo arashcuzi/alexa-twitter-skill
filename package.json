@@ -1,0 +1,29 @@
+{
+  "name": "alexa-twitter-skill",
+  "version": "1.0.0",
+  "description": "an app to get Elon Musk tweets from Alexa",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-sdk": "^1.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arashcuzi/alexa-twitter-skill.git"
+  },
+  "keywords": [
+    "Elon",
+    "Musk",
+    "Twitter",
+    "Alexa"
+  ],
+  "author": "Shawn Petros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arashcuzi/alexa-twitter-skill/issues"
+  },
+  "homepage": "https://github.com/arashcuzi/alexa-twitter-skill#readme"
+}
