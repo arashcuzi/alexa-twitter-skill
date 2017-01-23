@@ -1,12 +1,14 @@
 'use strict';
+// set process.env vars from .env in root
+require('dotenv').config();
 var Alexa = require('alexa-sdk');
 var Twitter = require('twitter');
 
 var client = new Twitter({
-  consumer_key: '',
-  consumer_secret: '',
-  access_token_key: '',
-  access_token_secret: '',
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
 var APP_ID = 'amzn1.ask.skill.a1d211d8-eee7-4c5c-bd53-87648910eaac'; //OPTIONAL: replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
