@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "alexa-sdk": "^1.0.6",
+    "dotenv": "^4.0.0",
     "twitter": "^1.7.0"
   },
   "devDependencies": {},
