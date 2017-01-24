@@ -28,9 +28,6 @@ var handlers = {
         this.emit('GetFact');
     },
     'GetFact': function () {
-        // Get a random Elon Musk fact from the Elon facts list
-        // var factIndex = Math.floor(Math.random() * ELON_FACTS.length);
-        // var randomFact = ELON_FACTS[factIndex];
         let self = this;
 
         // Create speech output
