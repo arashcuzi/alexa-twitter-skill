@@ -10,14 +10,6 @@ var client = new Twitter({
   bearer_token: process.env.BEARER_TOKEN,
 });
 
-client.get('search/tweets', { q: 'from:elonmusk' })
-  .then(function(data) {
-    console.log(data)
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-
 var APP_ID = 'amzn1.ask.skill.5fa7b020-50e5-4db6-801f-8d6d3d3504c8'; //OPTIONAL: replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
 var SKILL_NAME = 'Elon\'s Tweets';
 
