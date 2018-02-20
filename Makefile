@@ -6,12 +6,12 @@ PROFILE = ask-cli
 .phony: clean
 
 clean:
-	rm -f -r $(FUNCTION)*
+	rm -f -r *.zip
 
-build-dev: clean
+build: clean
 	zip -r $(FUNCTION).zip . -x "*.git*" "img/*" "*.zip" "package*" "test.js" ".vscode/*" ".DS_Store" "Make*"
 
-create-dev:
+create:
 	aws lambda create-function \
 		--handler index.handler \
 		--function-name $(FUNCTION) \
@@ -22,7 +22,7 @@ create-dev:
 		--timeout 120 \
 		--memory-size 512 \
 
-update-dev:
+update:
 	aws lambda update-function-code \
 		--function-name $(FUNCTION) \
 		--zip-file fileb://$(FUNCTION).zip \
@@ -30,5 +30,5 @@ update-dev:
 		--publish \
 		--profile $(PROFILE) \
 
-delete-dev:
+delete:
 	aws lambda delete-function --function-name $(FUNCTION)
