@@ -1,4 +1,4 @@
 node_modules
 .env
 elonstweets.zip
-Archive.zip
+*.zip

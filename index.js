@@ -1,5 +1,5 @@
 'use strict';
-// set process.env vars from .env in root
+// get configured variables from .env in root
 require('dotenv').config();
 var Alexa = require('alexa-sdk');
 var Twitter = require('twitter');
@@ -15,27 +15,36 @@ var SKILL_NAME = 'Elon\'s Tweets';
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.appId = APP_ID;
+    alexa.APP_ID = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('GetFact');
+        this.emit('GetTweet');
     },
     'GetNewFactIntent': function () {
-        this.emit('GetFact');
+        this.emit('GetTweet');
     },
-    'GetFact': function () {
-        let self = this;
+    'GetTweet': function () {
 
         // Create speech output
         var speechOutput;
-        client.get('search/tweets', { q: 'from:elonmusk' }, function(err, tweets, res) {
-          let i = Math.floor(Math.random() * tweets.statuses.length);
-          speechOutput = 'One of Elon\'s latest tweets is: ' + tweets.statuses[i].text;
-          self.emit(':tellWithCard', speechOutput, SKILL_NAME, tweets.statuses[i].text);
+        client.get('search/tweets', { q: 'node.js' }, (err, tweets, res) => {
+            if (!err) {
+                let i = Math.floor(Math.random() * tweets.statuses.length);
+                speechOutput = 'One of Elon\'s latest tweets is: ' + tweets.statuses[i].text;
+                console.log(speechOutput);
+                this.response.speak(speechOutput)
+                    .cardRenderer("Elon's Tweet", speechOutput);
+                this.emit(':responseReady');
+            } else {
+                console.log(err);
+                this.emit(':tell', 'Something went wrong!');
+                this.emit(':responseReady');
+                throw err;
+            }
         });
     },
     'AMAZON.HelpIntent': function () {
