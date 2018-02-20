@@ -31,7 +31,7 @@ var handlers = {
 
         // Create speech output
         var speechOutput;
-        client.get('search/tweets', { q: 'node.js' }, (err, tweets, res) => {
+        client.get('search/tweets', { q: 'from:elonmusk' }, (err, tweets, res) => {
             if (!err) {
                 let i = Math.floor(Math.random() * tweets.statuses.length);
                 speechOutput = 'One of Elon\'s latest tweets is: ' + tweets.statuses[i].text;
