@@ -10,7 +10,7 @@ var client = new Twitter({
   bearer_token: process.env.BEARER_TOKEN,
 });
 
-var APP_ID = 'amzn1.ask.skill.5fa7b020-50e5-4db6-801f-8d6d3d3504c8'; //OPTIONAL: replace with "amzn1.echo-sdk-ams.app.[your-unique-value-here]";
+var APP_ID = 'amzn1.ask.skill.5fa7b020-50e5-4db6-801f-8d6d3d3504c8'; //OPTIONAL: replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
 var SKILL_NAME = 'Elon\'s Tweets';
 
 exports.handler = function(event, context, callback) {
@@ -34,10 +34,10 @@ var handlers = {
         client.get('search/tweets', { q: 'from:elonmusk' }, (err, tweets, res) => {
             if (!err) {
                 let i = Math.floor(Math.random() * tweets.statuses.length);
-                speechOutput = 'One of Elon\'s latest tweets is: ' + tweets.statuses[i].text;
+                speechOutput = `One of Elon\'s latest tweets is: ${tweets.statuses[i].text}`;
                 console.log(speechOutput);
                 this.response.speak(speechOutput)
-                    .cardRenderer("Elon's Tweet", speechOutput);
+                    .cardRenderer('Elon\'s Tweet', speechOutput);
                 this.emit(':responseReady');
             } else {
                 console.log(err);
@@ -48,8 +48,8 @@ var handlers = {
         });
     },
     'AMAZON.HelpIntent': function () {
-        var speechOutput = "You can say tell me an elon tweet, or, you can say exit... What can I help you with?";
-        var reprompt = "What can I help you with?";
+        var speechOutput = 'You can say tell me an elon tweet, or, you can say exit...What can I help you with?';
+        var reprompt = 'What can I help you with?';
         this.emit(':ask', speechOutput, reprompt);
     },
     'AMAZON.CancelIntent': function () {
